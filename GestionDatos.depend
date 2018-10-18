@@ -1,0 +1,42 @@
+# depslib dependency file v1.0
+1539864096 source:r:\2multi\cpp\gestiondatos\data.cpp
+
+1539864347 source:r:\2multi\cpp\gestiondatos\database.cpp
+
+1539863862 source:r:\2multi\cpp\gestiondatos\datastruct.cpp
+
+1539863842 source:r:\2multi\cpp\gestiondatos\main.cpp
+
+1539865712 source:r:\2multi\cpp\gestiondatos\controller.cpp
+	<iostream>
+	<fstream>
+	"controller.h"
+
+1539865712 r:\2multi\cpp\gestiondatos\controller.h
+	<vector>
+	<string>
+	"database.h"
+
+1539864484 r:\2multi\cpp\gestiondatos\database.h
+	<vector>
+	<string>
+	"datastruct.h"
+	"data.h"
+
+1539865013 r:\2multi\cpp\gestiondatos\datastruct.h
+	<utility>
+	<string>
+	<vector>
+
+1539864243 r:\2multi\cpp\gestiondatos\data.h
+	<vector>
+	"datastruct.h"
+
+1539866593 source:r:\2multi\cpp\gestiondatos\m_utilities.cpp
+	<string>
+	<sstream>
+	"m_utilities.h"
+
+1539866581 r:\2multi\cpp\gestiondatos\m_utilities.h
+	<string>
+
