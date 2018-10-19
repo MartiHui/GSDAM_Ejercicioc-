@@ -8,14 +8,16 @@
 
 class Database {
 private:
-    std::string databaseName;
-    DataStruct estructura;
-    std::vector<Data> entradas;
+    std::string databaseName_;
+    DataStruct estructura_;
+    std::vector<Data> entradas_;
 
 public:
     std::string getDatabaseName();
     void setDatabaseName(std::string name);
     DataStruct getEstructura();
     void setEstructura(DataStruct ds);
+    std::vector<Data> getEntradas();
+    void loadDatabaseData();
 };
 #endif // DATABASE_H

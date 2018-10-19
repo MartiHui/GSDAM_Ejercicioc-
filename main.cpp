@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include "interface.h"
 #include "controller.h"
@@ -10,18 +11,17 @@ int main() {
     bool salir = false;
 
     do {
-        option = controller->interface->selectDatabase(controller->databases);
+        option = controller->interface_->selectDatabase(controller->databases_);
         if (option == 0) {
             salir = true;
-        } else if (option == controller->databases.size()+1) {
+        } else if (option == controller->databases_.size()+1) {
             controller->createDatabase();
         } else {
-            controller->currentDatabase = &controller->databases[option-1];
-            controller->menuDatabase();
+            controller->currentDatabase_ = &controller->databases_[option-1];
+            controller->manageDatabase();
         }
     } while (!salir);
-    std::cout << "ANTES DE BORRAR CONTROLLER" << std::endl;
+
     delete controller;
-    std::cout << "DESPUES DE BORRAR CONTROLLER" << std::endl;
     return 0;
 }

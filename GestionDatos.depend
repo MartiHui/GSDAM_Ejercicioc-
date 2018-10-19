@@ -71,3 +71,81 @@
 	"database.h"
 	"datastruct.h"
 
+1539995605 source:c:\users\marti\documents\c++\gestiondatos\controller.cpp
+	<iostream>
+	<fstream>
+	"database.h"
+	"datastruct.h"
+	"data.h"
+	"controller.h"
+	"m_utilities.h"
+
+1539995845 c:\users\marti\documents\c++\gestiondatos\database.h
+	<vector>
+	<string>
+	"datastruct.h"
+	"data.h"
+
+1539992888 c:\users\marti\documents\c++\gestiondatos\datastruct.h
+	<utility>
+	<string>
+	<vector>
+
+1539994561 c:\users\marti\documents\c++\gestiondatos\data.h
+	<string>
+	<vector>
+	"datastruct.h"
+
+1539994561 c:\users\marti\documents\c++\gestiondatos\controller.h
+	<vector>
+	<string>
+	<iostream>
+	<fstream>
+	"database.h"
+	"interface.h"
+
+1539995605 c:\users\marti\documents\c++\gestiondatos\interface.h
+	<vector>
+	<string>
+	"database.h"
+	"datastruct.h"
+	"data.h"
+
+1539973746 c:\users\marti\documents\c++\gestiondatos\m_utilities.h
+	<string>
+	<sstream>
+
+1539994561 source:c:\users\marti\documents\c++\gestiondatos\data.cpp
+	<string>
+	<vector>
+	"data.h"
+
+1539994907 source:c:\users\marti\documents\c++\gestiondatos\database.cpp
+	<string>
+	<vector>
+	"database.h"
+	"datastruct.h"
+	"data.h"
+
+1539992888 source:c:\users\marti\documents\c++\gestiondatos\datastruct.cpp
+	<string>
+	<utility>
+	"datastruct.h"
+
+1539995639 source:c:\users\marti\documents\c++\gestiondatos\interface.cpp
+	<iostream>
+	<vector>
+	<string>
+	<sstream>
+	<cstdio>
+	"interface.h"
+	"database.h"
+	"m_utilities.h"
+
+1539992896 source:c:\users\marti\documents\c++\gestiondatos\main.cpp
+	<iostream>
+	<string>
+	"interface.h"
+	"controller.h"
+	"m_utilities.h"
+

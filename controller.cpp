@@ -8,24 +8,21 @@
 #include "m_utilities.h"
 
 Controller::Controller() {
-    interface = new Interface;
+    interface_ = new Interface;
     getDatabases();
 }
 
 Controller::~Controller() {
-    delete interface;
-    if (currentDatabase) {
-        std::cout << "ANTES DE BORRAR CURRENTDATABASE" << std::endl;
-
-        delete currentDatabase;
-        std::cout << "DESPUES DE BORRAR CURRENTDATABASE" << std::endl;
+    delete interface_;
+    if (currentDatabase_) {
+        delete currentDatabase_;
     }
 }
 
 void Controller::getDatabases() {
     std::cout << "Entro en getDatabases" << std::endl;
     std::ifstream myFile;
-    myFile.open(filename);
+    myFile.open(filename_);
 
     Database db;
     DataStruct ds;
@@ -51,7 +48,7 @@ void Controller::getDatabases() {
         }
 
         db.setEstructura(ds);
-        databases.push_back(db);
+        databases_.push_back(db);
     }
 
     myFile.close();
@@ -59,7 +56,7 @@ void Controller::getDatabases() {
 
 void Controller::saveDatabase(Database& db) {
     std::ofstream myFile;
-    myFile.open(filename, std::ios_base::app);
+    myFile.open(filename_, std::ios_base::app);
 
     myFile << db.getDatabaseName() << std::endl;
 
@@ -76,14 +73,32 @@ void Controller::saveDatabase(Database& db) {
 void Controller::createDatabase() {
     Database db;
 
-    db.setDatabaseName(interface->getDatabaseName());
-    db.setEstructura(interface->getDatabaseEstructura());
+    db.setDatabaseName(interface_->getDatabaseName());
+    db.setEstructura(interface_->getDatabaseEstructura());
 
     saveDatabase(db);
-    databases.push_back(db);
+    databases_.push_back(db);
 }
 
-void Controller::menuDatabase() {
-    std::cout << currentDatabase->getDatabaseName() << std::endl;
+void Controller::manageDatabase() {
+    int option = 0;
+    bool salir = false;
+
+    do {
+        option = interface_->databaseMenu(currentDatabase_->getDatabaseName());
+        switch (option) {
+        case 0:
+            salir = true;
+            break;
+        case 1:
+            interface_->printDatabaseData(currentDatabase_);
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        }
+    } while (!salir);
+
 
 }

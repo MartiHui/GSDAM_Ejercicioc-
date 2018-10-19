@@ -6,8 +6,9 @@
 
 class DataStruct {
 private:
-    int numCampos;
-    std::vector<std::pair<std::string, int> > campos;
+    int numCampos_;
+    std::vector<std::pair<std::string, int> > campos_;
+
 public:
     void setNumCampos(int num);
     int getNumCampos();

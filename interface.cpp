@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <cstdio>
 
 #include "interface.h"
 #include "database.h"
@@ -84,6 +85,36 @@ DataStruct Interface::getDatabaseEstructura() {
     }
 
     return ds;
+}
+
+int Interface::databaseMenu(std::string databaseName) {
+    std::cout << "~~~~~~~~~~~~ " << databaseName << " ~~~~~~~~~~~~" << std::endl
+            << "1 - Ver entradas" << std::endl
+            << "2 - Añadir entrada" << std::endl
+            << "3 - Buscar entrada" << std::endl << std::endl
+            << "0 - Salir" << std::endl;
+
+     int option = 0;
+     option = getOption("Elige una opción:", 0, 3);
+     return option;
+}
+
+void Interface::printDatabaseData(Database* database) {
+    std::vector<Data> data = database->getEntradas();
+    DataStruct dataStruct = database->getEstructura();
+    int vectorSize = data.size();
+
+    std::cout << "Numero de entradas: " << to_string(vectorSize) << std::endl;
+    for (int x = 0; x < vectorSize; x++) {
+        std::cout << to_string(x+1) << ".";
+        for (int y = 0; y < dataStruct.getNumCampos(); y++) {
+            std::cout << "\t" << dataStruct.getCampo(y).first
+                << data[x].getInformacion(y) << std::endl;
+        }
+    }
+
+    std::cout << std::endl << "Presiona cualquier tecla para salir...";
+    std::getchar();
 }
 
 

@@ -5,6 +5,7 @@
 
 #include "database.h"
 #include "datastruct.h"
+#include "data.h"
 
 class Interface {
 private:
@@ -15,5 +16,7 @@ public:
     int selectDatabase(std::vector<Database> databases);
     std::string getDatabaseName();
     DataStruct getDatabaseEstructura();
+    int databaseMenu(std::string databaseName);
+    void printDatabaseData(Database* database);
 };
 #endif // INTERFACE_H

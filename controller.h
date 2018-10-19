@@ -10,18 +10,18 @@
 
 class Controller {
 private:
-    char* filename {"databases.log"};
+    char* filename_ {"databases.log"};
 
 public:
-    Interface* interface;
-    std::vector<Database> databases;
-    Database* currentDatabase = nullptr;
+    Interface* interface_;
+    std::vector<Database> databases_;
+    Database* currentDatabase_ = nullptr;
 
     Controller();
     ~Controller();
     void getDatabases();
     void saveDatabase(Database& db);
     void createDatabase();
-    void menuDatabase();
+    void manageDatabase();
 };
 #endif // CONTROLLER_H
