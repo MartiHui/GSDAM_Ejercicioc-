@@ -40,7 +40,8 @@
 		<Unit filename="database.h" />
 		<Unit filename="datastruct.cpp" />
 		<Unit filename="datastruct.h" />
-		<Unit filename="m_utilities.cpp" />
+		<Unit filename="interface.cpp" />
+		<Unit filename="interface.h" />
 		<Unit filename="m_utilities.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>

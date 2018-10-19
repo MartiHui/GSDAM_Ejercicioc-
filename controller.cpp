@@ -7,7 +7,23 @@
 #include "controller.h"
 #include "m_utilities.h"
 
+Controller::Controller() {
+    interface = new Interface;
+    getDatabases();
+}
+
+Controller::~Controller() {
+    delete interface;
+    if (currentDatabase) {
+        std::cout << "ANTES DE BORRAR CURRENTDATABASE" << std::endl;
+
+        delete currentDatabase;
+        std::cout << "DESPUES DE BORRAR CURRENTDATABASE" << std::endl;
+    }
+}
+
 void Controller::getDatabases() {
+    std::cout << "Entro en getDatabases" << std::endl;
     std::ifstream myFile;
     myFile.open(filename);
 
@@ -27,11 +43,11 @@ void Controller::getDatabases() {
         // Obtener el nombre de los campos y su longitud
         for (int i = 0; i < ds.getNumCampos(); i++) {
             std::string nombre;
-            int longitud;
+            std::string longitud;
 
             std::getline(myFile, nombre);
-            std::getline(myFile, linea);
-            ds.addCampo(nombre, std::stoi(linea));
+            std::getline(myFile, longitud);
+            ds.addCampo(nombre, std::stoi(longitud));
         }
 
         db.setEstructura(ds);
@@ -39,4 +55,35 @@ void Controller::getDatabases() {
     }
 
     myFile.close();
+}
+
+void Controller::saveDatabase(Database& db) {
+    std::ofstream myFile;
+    myFile.open(filename, std::ios_base::app);
+
+    myFile << db.getDatabaseName() << std::endl;
+
+    DataStruct ds = db.getEstructura();
+    myFile << ds.getNumCampos() << std::endl;
+    for (int i = 0; i < ds.getNumCampos(); i++) {
+        myFile << ds.getCampo(i).first << std::endl
+            << to_string(ds.getCampo(i).second) << std::endl;
+    }
+
+    myFile.close();
+}
+
+void Controller::createDatabase() {
+    Database db;
+
+    db.setDatabaseName(interface->getDatabaseName());
+    db.setEstructura(interface->getDatabaseEstructura());
+
+    saveDatabase(db);
+    databases.push_back(db);
+}
+
+void Controller::menuDatabase() {
+    std::cout << currentDatabase->getDatabaseName() << std::endl;
+
 }

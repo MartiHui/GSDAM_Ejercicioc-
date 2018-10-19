@@ -11,6 +11,7 @@ private:
 public:
     void setNumCampos(int num);
     int getNumCampos();
-    int addCampo(std::string nombre, int len);
+    void addCampo(std::string nombre, int len);
+    std::pair<std::string, int> getCampo(int indice);
 };
 #endif // DATASTRUCT_H
