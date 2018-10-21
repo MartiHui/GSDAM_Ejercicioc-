@@ -11,6 +11,9 @@ private:
     std::vector<std::string> informacion_;
 
 public:
+    DataStruct getEstructura();
+    void setEstructura(DataStruct estructura);
     std::string getInformacion(int indice);
+    void addInformacion(std::string info);
 };
 #endif // DATA_H

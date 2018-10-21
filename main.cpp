@@ -22,6 +22,6 @@ int main() {
         }
     } while (!salir);
 
-    delete controller;
+    //delete controller;
     return 0;
 }

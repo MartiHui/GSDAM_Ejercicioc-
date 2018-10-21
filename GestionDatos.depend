@@ -1,24 +1,5 @@
 # depslib dependency file v1.0
-1539945229 source:r:\2multi\cpp\gestiondatos\data.cpp
-	"data.h"
-
-1539945229 source:r:\2multi\cpp\gestiondatos\database.cpp
-	<string>
-	"database.h"
-	"datastruct.h"
-
-1539954137 source:r:\2multi\cpp\gestiondatos\datastruct.cpp
-	<string>
-	<utility>
-	"datastruct.h"
-
-1539957125 source:r:\2multi\cpp\gestiondatos\main.cpp
-	<iostream>
-	"interface.h"
-	"controller.h"
-	"m_utilities.h"
-
-1539956707 source:r:\2multi\cpp\gestiondatos\controller.cpp
+1540144942 source:c:\users\marti\documents\c++\gestiondatos\controller.cpp
 	<iostream>
 	<fstream>
 	"database.h"
@@ -27,60 +8,7 @@
 	"controller.h"
 	"m_utilities.h"
 
-1539956353 r:\2multi\cpp\gestiondatos\controller.h
-	<vector>
-	<string>
-	<iostream>
-	<fstream>
-	"database.h"
-	"interface.h"
-
-1539867131 r:\2multi\cpp\gestiondatos\database.h
-	<vector>
-	<string>
-	"datastruct.h"
-	"data.h"
-
-1539954137 r:\2multi\cpp\gestiondatos\datastruct.h
-	<utility>
-	<string>
-	<vector>
-
-1539864243 r:\2multi\cpp\gestiondatos\data.h
-	<vector>
-	"datastruct.h"
-
-1539950483 source:r:\2multi\cpp\gestiondatos\m_utilities.cpp
-
-1539950494 r:\2multi\cpp\gestiondatos\m_utilities.h
-	<string>
-	<sstream>
-
-1539954197 source:r:\2multi\cpp\gestiondatos\interface.cpp
-	<iostream>
-	<vector>
-	<string>
-	<sstream>
-	"interface.h"
-	"database.h"
-	"m_utilities.h"
-
-1539954137 r:\2multi\cpp\gestiondatos\interface.h
-	<vector>
-	<string>
-	"database.h"
-	"datastruct.h"
-
-1539995605 source:c:\users\marti\documents\c++\gestiondatos\controller.cpp
-	<iostream>
-	<fstream>
-	"database.h"
-	"datastruct.h"
-	"data.h"
-	"controller.h"
-	"m_utilities.h"
-
-1539995845 c:\users\marti\documents\c++\gestiondatos\database.h
+1540144808 c:\users\marti\documents\c++\gestiondatos\database.h
 	<vector>
 	<string>
 	"datastruct.h"
@@ -91,12 +19,12 @@
 	<string>
 	<vector>
 
-1539994561 c:\users\marti\documents\c++\gestiondatos\data.h
+1540138042 c:\users\marti\documents\c++\gestiondatos\data.h
 	<string>
 	<vector>
 	"datastruct.h"
 
-1539994561 c:\users\marti\documents\c++\gestiondatos\controller.h
+1540142029 c:\users\marti\documents\c++\gestiondatos\controller.h
 	<vector>
 	<string>
 	<iostream>
@@ -104,7 +32,7 @@
 	"database.h"
 	"interface.h"
 
-1539995605 c:\users\marti\documents\c++\gestiondatos\interface.h
+1540144808 c:\users\marti\documents\c++\gestiondatos\interface.h
 	<vector>
 	<string>
 	"database.h"
@@ -115,16 +43,9 @@
 	<string>
 	<sstream>
 
-1539994561 source:c:\users\marti\documents\c++\gestiondatos\data.cpp
+1540137286 source:c:\users\marti\documents\c++\gestiondatos\data.cpp
 	<string>
 	<vector>
-	"data.h"
-
-1539994907 source:c:\users\marti\documents\c++\gestiondatos\database.cpp
-	<string>
-	<vector>
-	"database.h"
-	"datastruct.h"
 	"data.h"
 
 1539992888 source:c:\users\marti\documents\c++\gestiondatos\datastruct.cpp
@@ -132,7 +53,7 @@
 	<utility>
 	"datastruct.h"
 
-1539995639 source:c:\users\marti\documents\c++\gestiondatos\interface.cpp
+1540145722 source:c:\users\marti\documents\c++\gestiondatos\interface.cpp
 	<iostream>
 	<vector>
 	<string>
@@ -142,10 +63,20 @@
 	"database.h"
 	"m_utilities.h"
 
-1539992896 source:c:\users\marti\documents\c++\gestiondatos\main.cpp
+1540142426 source:c:\users\marti\documents\c++\gestiondatos\main.cpp
 	<iostream>
 	<string>
 	"interface.h"
 	"controller.h"
+	"m_utilities.h"
+
+1540145521 source:c:\users\marti\documents\c++\gestiondatos\database.cpp
+	<string>
+	<vector>
+	<fstream>
+	<iostream>
+	"database.h"
+	"datastruct.h"
+	"data.h"
 	"m_utilities.h"
 

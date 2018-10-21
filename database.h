@@ -12,6 +12,9 @@ private:
     DataStruct estructura_;
     std::vector<Data> entradas_;
 
+    void decrypt(std::string linea, Data &data);
+    std::string encrypt(Data& data);
+
 public:
     std::string getDatabaseName();
     void setDatabaseName(std::string name);
@@ -19,5 +22,7 @@ public:
     void setEstructura(DataStruct ds);
     std::vector<Data> getEntradas();
     void loadDatabaseData();
+    void addEntrada(Data data);
+    std::vector<Data> buscarEntradas(int campo, std::string busqueda);
 };
 #endif // DATABASE_H

@@ -17,6 +17,8 @@ public:
     std::string getDatabaseName();
     DataStruct getDatabaseEstructura();
     int databaseMenu(std::string databaseName);
-    void printDatabaseData(Database* database);
+    void printDatabaseData(std::vector<Data> data, DataStruct dataStruct);
+    Data getNewDataEntry(Database* database);
+    void searchData(Database* database);
 };
 #endif // INTERFACE_H

@@ -95,13 +95,11 @@ int Interface::databaseMenu(std::string databaseName) {
             << "0 - Salir" << std::endl;
 
      int option = 0;
-     option = getOption("Elige una opción:", 0, 3);
+     option = getOption("Elige una opcion:", 0, 3);
      return option;
 }
 
-void Interface::printDatabaseData(Database* database) {
-    std::vector<Data> data = database->getEntradas();
-    DataStruct dataStruct = database->getEstructura();
+void Interface::printDatabaseData(std::vector<Data> data, DataStruct dataStruct) {
     int vectorSize = data.size();
 
     std::cout << "Numero de entradas: " << to_string(vectorSize) << std::endl;
@@ -109,12 +107,49 @@ void Interface::printDatabaseData(Database* database) {
         std::cout << to_string(x+1) << ".";
         for (int y = 0; y < dataStruct.getNumCampos(); y++) {
             std::cout << "\t" << dataStruct.getCampo(y).first
-                << data[x].getInformacion(y) << std::endl;
+                << ": " << data[x].getInformacion(y) << std::endl;
         }
     }
 
-    std::cout << std::endl << "Presiona cualquier tecla para salir...";
+    std::cout << std::endl << "Presiona cualquier tecla para salir..." << std::endl;
     std::getchar();
 }
 
+Data Interface::getNewDataEntry(Database* database) {
+    Data data;
+    DataStruct ds = database->getEstructura();
+    data.setEstructura(ds);
+    std::string linea;
+
+    std::cout << "Creando una nueva entrada en la base de datos" << std::endl;
+    for (int i = 0; i < ds.getNumCampos(); i++) {
+        std::cout << ds.getCampo(i).first << ": (Maximo " << ds.getCampo(i).second << " caracteres.)" << std::endl;
+        std::getline(std::cin, linea);
+        linea.resize(ds.getCampo(i).second, '\0');
+        data.addInformacion(linea);
+    }
+    std::cout << "Nueva entrada creada." << std::endl
+        << "Presiona cualquier tecla para salir..." << std::endl;
+    std::getchar();
+
+    return data;
+}
+
+void Interface::searchData(Database* database) {
+    std::cout << "Buscar entrada: " << std::endl
+        << "Elige que campo usar para la busqueda: " << std::endl;
+
+    DataStruct ds = database->getEstructura();
+    int campo = 0;
+    for (int i = 0; i < ds.getNumCampos(); i++) {
+        std::cout << to_string(i+1) << " - " << ds.getCampo(i).first << std::endl;
+    }
+    campo = getOption("", 1, ds.getNumCampos()) - 1;
+
+    std::string busqueda;
+    std::cout << "Introduce el termino a buscar: " << std::endl;
+    std::getline(std::cin, busqueda);
+
+    printDatabaseData(database->buscarEntradas(campo, busqueda), ds);
+}
 

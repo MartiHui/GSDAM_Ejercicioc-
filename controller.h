@@ -10,7 +10,7 @@
 
 class Controller {
 private:
-    char* filename_ {"databases.log"};
+    const char* filename_ {"databases.log"};
 
 public:
     Interface* interface_;
@@ -18,7 +18,7 @@ public:
     Database* currentDatabase_ = nullptr;
 
     Controller();
-    ~Controller();
+    virtual ~Controller();
     void getDatabases();
     void saveDatabase(Database& db);
     void createDatabase();

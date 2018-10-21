@@ -83,6 +83,7 @@ void Controller::createDatabase() {
 void Controller::manageDatabase() {
     int option = 0;
     bool salir = false;
+    currentDatabase_->loadDatabaseData();
 
     do {
         option = interface_->databaseMenu(currentDatabase_->getDatabaseName());
@@ -91,11 +92,18 @@ void Controller::manageDatabase() {
             salir = true;
             break;
         case 1:
-            interface_->printDatabaseData(currentDatabase_);
+            interface_->printDatabaseData(currentDatabase_->getEntradas(), currentDatabase_->getEstructura());
             break;
+
         case 2:
+            {
+            Data data = interface_->getNewDataEntry(currentDatabase_);
+            currentDatabase_->addEntrada(data);
             break;
+            }
+
         case 3:
+            interface_->searchData(currentDatabase_);
             break;
         }
     } while (!salir);
