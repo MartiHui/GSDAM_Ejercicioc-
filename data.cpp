@@ -3,18 +3,18 @@
 
 #include "data.h"
 
-DataStruct Data::getEstructura() {
-    return estructura_;
+DataTemplate Data::getTemplate() {
+    return template_;
 }
 
-void Data::setEstructura(DataStruct estructura) {
-    estructura_ = estructura;
+void Data::setTemplate(DataTemplate dataTemplate) {
+    template_ = dataTemplate;
 }
 
-std::string Data::getInformacion(int indice) {
-    return informacion_[indice];
+std::string Data::getInformation(int idx) {
+    return information_[idx];
 }
 
-void Data::addInformacion(std::string info) {
-    informacion_.push_back(info);
+void Data::addInformation(std::string info) {
+    information_.push_back(info);
 }

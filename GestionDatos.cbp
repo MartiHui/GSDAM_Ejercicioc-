@@ -38,8 +38,8 @@
 		<Unit filename="data.h" />
 		<Unit filename="database.cpp" />
 		<Unit filename="database.h" />
-		<Unit filename="datastruct.cpp" />
-		<Unit filename="datastruct.h" />
+		<Unit filename="datatemplate.cpp" />
+		<Unit filename="datatemplate.h" />
 		<Unit filename="interface.cpp" />
 		<Unit filename="interface.h" />
 		<Unit filename="m_utilities.h" />

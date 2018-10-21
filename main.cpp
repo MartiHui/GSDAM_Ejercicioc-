@@ -1,9 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "interface.h"
 #include "controller.h"
-#include "m_utilities.h"
 
 int main() {
     Controller* controller = new Controller;
@@ -12,6 +10,7 @@ int main() {
 
     do {
         option = controller->interface_->selectDatabase(controller->databases_);
+
         if (option == 0) {
             salir = true;
         } else if (option == controller->databases_.size()+1) {
@@ -22,6 +21,6 @@ int main() {
         }
     } while (!salir);
 
-    //delete controller;
+    //delete controller; <-- Crashea al final del deconstructor y no se porque
     return 0;
 }

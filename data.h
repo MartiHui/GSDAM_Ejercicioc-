@@ -3,17 +3,18 @@
 #include <string>
 #include <vector>
 
-#include "datastruct.h"
+#include "datatemplate.h"
 
+// Almacena una entrada de una base de datos
 class Data {
 private:
-    DataStruct estructura_;
-    std::vector<std::string> informacion_;
+    DataTemplate template_;
+    std::vector<std::string> information_;
 
 public:
-    DataStruct getEstructura();
-    void setEstructura(DataStruct estructura);
-    std::string getInformacion(int indice);
-    void addInformacion(std::string info);
+    DataTemplate getTemplate();
+    void setTemplate(DataTemplate dataTemplate);
+    std::string getInformation(int idx);
+    void addInformation(std::string info);
 };
 #endif // DATA_H

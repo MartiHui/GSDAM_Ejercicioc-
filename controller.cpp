@@ -2,7 +2,7 @@
 #include <fstream>
 
 #include "database.h"
-#include "datastruct.h"
+#include "datatemplate.h"
 #include "data.h"
 #include "controller.h"
 #include "m_utilities.h"
@@ -19,35 +19,35 @@ Controller::~Controller() {
     }
 }
 
+// Recupero las estructuras de todas las bases de datos guardadas (nombre y plantilla de las entradas)
 void Controller::getDatabases() {
-    std::cout << "Entro en getDatabases" << std::endl;
     std::ifstream myFile;
     myFile.open(filename_);
 
     Database db;
-    DataStruct ds;
+    DataTemplate ds;
     while (myFile.peek() != EOF) {
-        std::string linea;
+        std::string line;
 
         // Obtener nombre de la base de datos
-        std::getline(myFile, linea);
-        db.setDatabaseName(linea);
+        std::getline(myFile, line);
+        db.setDatabaseName(line);
 
         // Obtener número de campos de la estructura
-        std::getline(myFile, linea);
-        ds.setNumCampos(std::stoi(linea));
+        std::getline(myFile, line);
+        ds.setNumFields(std::stoi(line));
 
         // Obtener el nombre de los campos y su longitud
-        for (int i = 0; i < ds.getNumCampos(); i++) {
-            std::string nombre;
-            std::string longitud;
+        for (int i = 0; i < ds.getNumFields(); i++) {
+            std::string fieldName;
+            std::string fieldLen;
 
-            std::getline(myFile, nombre);
-            std::getline(myFile, longitud);
-            ds.addCampo(nombre, std::stoi(longitud));
+            std::getline(myFile, fieldName);
+            std::getline(myFile, fieldLen);
+            ds.addField(fieldName, std::stoi(fieldLen));
         }
 
-        db.setEstructura(ds);
+        db.setTemplate(ds);
         databases_.push_back(db);
     }
 
@@ -60,11 +60,12 @@ void Controller::saveDatabase(Database& db) {
 
     myFile << db.getDatabaseName() << std::endl;
 
-    DataStruct ds = db.getEstructura();
-    myFile << ds.getNumCampos() << std::endl;
-    for (int i = 0; i < ds.getNumCampos(); i++) {
-        myFile << ds.getCampo(i).first << std::endl
-            << to_string(ds.getCampo(i).second) << std::endl;
+    DataTemplate ds = db.getTemplate();
+    myFile << ds.getNumFields() << std::endl;
+    for (int i = 0; i < ds.getNumFields(); i++) {
+        // En una fila guardo el nombre del campo y en la siguiente la longitud
+        myFile << ds.getField(i).first << std::endl
+            << to_string(ds.getField(i).second) << std::endl;
     }
 
     myFile.close();
@@ -73,8 +74,8 @@ void Controller::saveDatabase(Database& db) {
 void Controller::createDatabase() {
     Database db;
 
-    db.setDatabaseName(interface_->getDatabaseName());
-    db.setEstructura(interface_->getDatabaseEstructura());
+    db.setDatabaseName(interface_->getDatabaseName(databases_));
+    db.setTemplate(interface_->getDatabaseTemplate());
 
     saveDatabase(db);
     databases_.push_back(db);
@@ -82,31 +83,30 @@ void Controller::createDatabase() {
 
 void Controller::manageDatabase() {
     int option = 0;
-    bool salir = false;
-    currentDatabase_->loadDatabaseData();
+    bool exit = false;
+    currentDatabase_->loadFileEntries();
 
     do {
         option = interface_->databaseMenu(currentDatabase_->getDatabaseName());
         switch (option) {
-        case 0:
-            salir = true;
-            break;
-        case 1:
-            interface_->printDatabaseData(currentDatabase_->getEntradas(), currentDatabase_->getEstructura());
-            break;
+            case 0: // Salir al menú de seleccion de base de datos
+                exit = true;
+                break;
 
-        case 2:
-            {
-            Data data = interface_->getNewDataEntry(currentDatabase_);
-            currentDatabase_->addEntrada(data);
-            break;
-            }
+            case 1: // Mostrar todas las entradas de la base de datos
+                interface_->printDatabaseEntries(currentDatabase_->getEntries(), currentDatabase_->getTemplate());
+                break;
 
-        case 3:
-            interface_->searchData(currentDatabase_);
-            break;
+            case 2: // Añadir una entrada a la base de datos
+                { // Limitamos el ámbito del objeto Data, de lo contrario no compila
+                Data data = interface_->getNewDataEntry(currentDatabase_);
+                currentDatabase_->addEntry(data);
+                break;
+                }
+
+            case 3: // Buscar una palabra entre la información de las entradas
+                interface_->searchInEntries(currentDatabase_);
+                break;
         }
-    } while (!salir);
-
-
+    } while (!exit);
 }
