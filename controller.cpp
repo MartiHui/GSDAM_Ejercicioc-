@@ -8,12 +8,10 @@
 #include "m_utilities.h"
 
 Controller::Controller() {
-    interface_ = new Interface;
     getDatabases();
 }
 
 Controller::~Controller() {
-    delete interface_;
     if (currentDatabase_) {
         delete currentDatabase_;
     }
@@ -71,42 +69,12 @@ void Controller::saveDatabase(Database& db) {
     myFile.close();
 }
 
-void Controller::createDatabase() {
+void Controller::createDatabase(std::string databaseName, DataTemplate dataTemplate) {
     Database db;
 
-    db.setDatabaseName(interface_->getDatabaseName(databases_));
-    db.setTemplate(interface_->getDatabaseTemplate());
+    db.setDatabaseName(databaseName);
+    db.setTemplate(dataTemplate);
 
     saveDatabase(db);
     databases_.push_back(db);
-}
-
-void Controller::manageDatabase() {
-    int option = 0;
-    bool exit = false;
-    currentDatabase_->loadFileEntries();
-
-    do {
-        option = interface_->databaseMenu(currentDatabase_->getDatabaseName());
-        switch (option) {
-            case 0: // Salir al menú de seleccion de base de datos
-                exit = true;
-                break;
-
-            case 1: // Mostrar todas las entradas de la base de datos
-                interface_->printDatabaseEntries(currentDatabase_->getEntries(), currentDatabase_->getTemplate());
-                break;
-
-            case 2: // Añadir una entrada a la base de datos
-                { // Limitamos el ámbito del objeto Data, de lo contrario no compila
-                Data data = interface_->getNewDataEntry(currentDatabase_);
-                currentDatabase_->addEntry(data);
-                break;
-                }
-
-            case 3: // Buscar una palabra entre la información de las entradas
-                interface_->searchInEntries(currentDatabase_);
-                break;
-        }
-    } while (!exit);
 }

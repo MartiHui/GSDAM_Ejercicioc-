@@ -1,1 +1,82 @@
 # depslib dependency file v1.0
+1540165153 source:c:\users\marti\documents\c++\gestiondatos\data.cpp
+	<string>
+	<vector>
+	"data.h"
+
+1540165281 c:\users\marti\documents\c++\gestiondatos\data.h
+	<string>
+	<vector>
+	"datatemplate.h"
+
+1540165153 c:\users\marti\documents\c++\gestiondatos\datatemplate.h
+	<string>
+	<utility>
+	<vector>
+
+1540165312 source:c:\users\marti\documents\c++\gestiondatos\database.cpp
+	<vector>
+	<string>
+	<fstream>
+	<iostream>
+	"database.h"
+	"datatemplate.h"
+	"data.h"
+	"m_utilities.h"
+
+1540165281 c:\users\marti\documents\c++\gestiondatos\database.h
+	<vector>
+	<string>
+	"datatemplate.h"
+	"data.h"
+
+1539973746 c:\users\marti\documents\c++\gestiondatos\m_utilities.h
+	<string>
+	<sstream>
+
+1540165281 source:c:\users\marti\documents\c++\gestiondatos\datatemplate.cpp
+	<string>
+	<utility>
+	"datatemplate.h"
+
+1540505911 source:c:\users\marti\documents\c++\gestiondatos\main.cpp
+	<iostream>
+	<string>
+	"interface.h"
+
+1540506206 c:\users\marti\documents\c++\gestiondatos\interface.h
+	<vector>
+	<string>
+	"controller.h"
+	"database.h"
+	"datatemplate.h"
+	"data.h"
+
+1540506206 c:\users\marti\documents\c++\gestiondatos\controller.h
+	<vector>
+	<string>
+	<iostream>
+	<fstream>
+	"database.h"
+
+1540506137 source:c:\users\marti\documents\c++\gestiondatos\interface.cpp
+	<vector>
+	<string>
+	<iostream>
+	<sstream>
+	<cstdio>
+	<algorithm>
+	"interface.h"
+	"controller.h"
+	"database.h"
+	"m_utilities.h"
+
+1540505911 source:c:\users\marti\documents\c++\gestiondatos\controller.cpp
+	<iostream>
+	<fstream>
+	"database.h"
+	"datatemplate.h"
+	"data.h"
+	"controller.h"
+	"m_utilities.h"
+
